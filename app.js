@@ -144,24 +144,26 @@ function iniciarCompra() {
         alert("El carrito está vacío.");
       } 
       else {
-        const inputId = parseInt(prompt(carrito.mostrarResumen() + "\n\n¿Qué producto querés eliminar? Ingresá el ID:"));
-        //Busco el producto
-        const product = carrito.items.find(p => p.producto.id === inputId);
-        //Si lo encuentro continuo
-        if (product != null && !isNaN(inputId)) {
+        //Obtengo el indice del producto
+        const inputIndex = parseInt(prompt(carrito.mostrarResumen() + "\n\n¿Qué producto querés eliminar? Ingresá el número de la lista:")) - 1;
+
+        //Verifico que ese indice sea valido
+        if (!isNaN(inputIndex) && inputIndex >= 0 && inputIndex < carrito.items.length) {
+          //Obtengo el producto
+          const product = carrito.items[inputIndex];
           const cantidad = parseInt(prompt("¿Cuántas unidades querés eliminar?"));
 
-          //Verifico que la cantidad ingresada sea válida
+          //Verifico que la cantidad sea valida
           if (!isNaN(cantidad) && cantidad > 0) {
             carrito.eliminarProducto(product.producto.id, cantidad);
           } 
           else {
             alert("Cantidad inválida");
           }
-          } 
-          else {
+        } 
+        else {
           alert("Datos inválidos.");
-          }
+        }
         }
     }
 
