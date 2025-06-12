@@ -1,15 +1,16 @@
-// Clase Producto
-class Producto {
-  constructor(id, nombre, precio) {
-    this.id = id;
-    this.nombre = nombre;
-    this.precio = precio;
+//Clases
+class Producto{
+  constructor(id, nombre, descripcion, precio,imagen){
+      this.id = id;
+      this.nombre = nombre;
+      this.descripcion = descripcion;
+      this.precio = precio;
+      this.imagen = imagen;
   }
 }
 
-// Clase Carrito
-class Carrito {
-  constructor() {
+class Carrito{
+  constructor(){
     this.items = [];
   }
 
@@ -25,170 +26,124 @@ class Carrito {
     else {
       this.items.push({ producto, cantidad });
     }
-
-    //Muestro movimiento por consola
-    console.log(`${cantidad} x ${producto.nombre} fue agregado al carrito.`);
   }
 
-  //Funcion para eliminar producto
-  eliminarProducto(idProducto, cantidad) {
-    // Busco producto
-    const item = this.items.find(item => item.producto.id === idProducto);
+  // //Funcion para eliminar producto
+  // eliminarProducto(idProducto, cantidad) {
+  //   // Busco producto
+  //   const item = this.items.find(item => item.producto.id === idProducto);
 
-    // Si no está, tiro error
-    if (!item) {
-      alert("Ese producto no está en el carrito.");
-      return;
-    }
+  //   // Si no está, tiro error
+  //   if (!item) {
+  //     alert("Ese producto no está en el carrito.");
+  //     return;
+  //   }
 
-    // Verifico si la cantidad a eliminar es mayor a la agregada al carrito y tiro error
-    if (cantidad > item.cantidad) {
-      alert(`Error: solo tenés ${item.cantidad} unidad(es) de "${item.producto.nombre}" en el carrito.`);
-      return;
-    }
+  //   // Verifico si la cantidad a eliminar es mayor a la agregada al carrito y tiro error
+  //   if (cantidad > item.cantidad) {
+  //     alert(`Error: solo tenés ${item.cantidad} unidad(es) de "${item.producto.nombre}" en el carrito.`);
+  //     return;
+  //   }
 
-    // Si la cantidad a eliminar es igual a la del carrito, elimino el producto del carrito
-    if (cantidad === item.cantidad) {
-      const index = this.items.findIndex(i => i.producto.id === idProducto);
-      if (index !== -1) {
-        this.items.splice(index, 1);
-        alert(`Se eliminó completamente "${item.producto.nombre}" del carrito.`);
-      }
-    } 
-    // Si no, le resto la cantidad deseada
-    else {
-      item.cantidad -= cantidad;
-      alert(`Se eliminaron ${cantidad} unidad(es) de "${item.producto.nombre}".`);
-    }
-  }
-
-  //Funcion para calcular el total de compra
-  calcularTotal() {
-    let total = 0;
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i];
-      total += item.producto.precio * item.cantidad;
-    }
-    return total;
-  }
-
-  //Funcion para mostrar los datos de la compra
-  mostrarResumen() {
-    //Verifico si el carrito esta vacio
-    if (this.items.length === 0) {
-      return "Tu carrito está vacío.";
-    }
-
-    //Si no, muestro el resumen
-    let resumen = "Productos en tu carrito:\n";
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i];
-      resumen += `${i + 1}. ${item.producto.nombre} - $${item.producto.precio} x ${item.cantidad} = $${item.producto.precio * item.cantidad}\n`;
-    }
-    resumen += `\nTotal: $${this.calcularTotal()}`;
-    return resumen;
-  }
+  //   // Si la cantidad a eliminar es igual a la del carrito, elimino el producto del carrito
+  //   if (cantidad === item.cantidad) {
+  //     const index = this.items.findIndex(i => i.producto.id === idProducto);
+  //     if (index !== -1) {
+  //       this.items.splice(index, 1);
+  //       alert(`Se eliminó completamente "${item.producto.nombre}" del carrito.`);
+  //     }
+  //   } 
+  //   // Si no, le resto la cantidad deseada
+  //   else {
+  //     item.cantidad -= cantidad;
+  //     alert(`Se eliminaron ${cantidad} unidad(es) de "${item.producto.nombre}".`);
+  //   }
+  // }
 }
 
 // Lista de productos
 const productos = [
-  new Producto(1, "Pelota Mikasa", 25000),
-  new Producto(2, "Red profesional", 45000),
-  new Producto(3, "Rodilleras Mizuno", 12000)
+  new Producto(1, "Pelota Mikasa", "descripcion", 25000, ""),
+  new Producto(2, "Red profesional", "descripcion", 45000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, "")
 ];
 
-// Carrito
 const carrito = new Carrito();
+let paginaActual = 1;
+const productosPorPagina = 12;
 
-// Mostrar productos
-function mostrarProductos() {
-  let mensaje = "Catálogo de productos:\n";
-  for (let i = 0; i < productos.length; i++) {
-    const p = productos[i];
-    mensaje += `${p.id}. ${p.nombre} - $${p.precio}\n`;
-  }
-  mensaje += "\nElegí un producto por su número:";
-  return mensaje;
+//Funcion para mostrar productos
+function MostrarProductos(lista) {
+  //Obtengo el contenedor
+  const divProducto = document.getElementById("divProductos");
+  divProducto.innerHTML = "";
+
+  //Por cada producto agrego un elemento div que contiene las cards
+  lista.forEach(product => {
+    const div = document.createElement("div");
+    div.className = "col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex justify-content-center text-center";
+
+    div.innerHTML = `<div class="card h-100" style="width: 18rem;">
+      <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
+      <div class="card-body">
+        <h5 class="card-title">${product.nombre}</h5>
+        <p class="card-text">$${product.precio}</p>
+        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+      </div>
+    </div>`;
+
+    //Agrego la card al contenedor
+    divProducto.appendChild(div);
+  });
 }
 
-// Iniciar compra
-function iniciarCompra() {
-  let continuar = true;
-  while (continuar) {
-    const accion = prompt("¿Qué querés hacer?\n1. Agregar producto\n2. Eliminar producto\n3. Finalizar compra");
+//Funcion para filtrar los productos que van en cada página
+function obtenerProductosPorPagina(productos, pagina) {
+  const inicio = (pagina - 1) * productosPorPagina;
+  const fin = inicio + productosPorPagina;
+  return productos.slice(inicio, fin);
+}
 
-    //Accion añadir producto
-    if (accion == "1") {
-      const input = prompt(mostrarProductos());
-      //Busco el producto
-      const prod = productos.find(p => p.id == parseInt(input));
+//Agrego las páginas
+function Paginar(productos) {
+  //Obtengo el elemento contenedor
+  const contenedor = document.getElementById("paginacion");
+  contenedor.innerHTML = "";
 
-      //Si lo encuentro, continuo con la compra
-      if (prod != null) {
-        const cantidad = parseInt(prompt(`¿Cuántas unidades de "${prod.nombre}" querés comprar?`));
-        //Verifico que la cantidad ingresada sea válida
-        if (!isNaN(cantidad) && cantidad > 0) {
-          carrito.agregarProducto(prod, cantidad);
-        } else {
-          alert("Cantidad inválida.");
-        }
-      } else {
-        alert("Producto no encontrado.");
-      }
-    }
+  //Calculo cuantas paginas tengo en total
+  const totalPaginas = Math.ceil(productos.length / productosPorPagina);
 
-    //Accion eliminar producto
-    else if (accion == "2") {
-      //Verifico si el carrito esta vacío
-      if (carrito.items.length == 0) {
-        alert("El carrito está vacío.");
-      } 
-      else {
-        //Obtengo el indice del producto
-        const inputIndex = parseInt(prompt(carrito.mostrarResumen() + "\n\n¿Qué producto querés eliminar? Ingresá el número de la lista:")) - 1;
+  //Por cada pagina, agrego un elemento li
+  for (let i = 1; i <= totalPaginas; i++) {
+    const pag = document.createElement("li");
+    pag.className = `page-item ${i === paginaActual ? "active" : ""}`;
+    pag.innerHTML = `<button class="page-link">${i}</button>`;
 
-        //Verifico que ese indice sea valido
-        if (!isNaN(inputIndex) && inputIndex >= 0 && inputIndex < carrito.items.length) {
-          //Obtengo el producto
-          const product = carrito.items[inputIndex];
-          const cantidad = parseInt(prompt("¿Cuántas unidades querés eliminar?"));
+    //Creo un evento para que cada vez que hago click, vuelva a llamar a MostrarPorductos para mostrarlos y Paginar para modificar la pagina activa
+    pag.addEventListener("click", () => {
+      paginaActual = i;
+      MostrarProductos(obtenerProductosPorPagina(productos, paginaActual));
+      Paginar(productos);
+    });
 
-          //Verifico que la cantidad sea valida
-          if (!isNaN(cantidad) && cantidad > 0) {
-            carrito.eliminarProducto(product.producto.id, cantidad);
-          } 
-          else {
-            alert("Cantidad inválida");
-          }
-        } 
-        else {
-          alert("Datos inválidos.");
-        }
-        }
-    }
-
-    //Accion finalizar compra, salgo del while
-    else if (accion == "3") {
-      continuar = false;
-    }
-
-    //Verifico que se ingrese una opcion válida
-    else {
-      alert("Opción no válida.");
-    }
-  }
-
-  //Muestro el resumen de la compra y pido confirmacion o rechazo
-  alert(carrito.mostrarResumen());
-  if (carrito.items.length > 0) {
-    const confirmarCompra = confirm("¿Querés confirmar la compra?");
-    if (confirmarCompra) {
-      alert("¡Gracias por tu compra!");
-    } else {
-      alert("Compra cancelada.");
-    }
+    //Agrego la pagina al contenedor
+    contenedor.appendChild(pag);
   }
 }
 
-//Llamo la función
-iniciarCompra();
+MostrarProductos(obtenerProductosPorPagina(productos, paginaActual));
+Paginar(productos);
