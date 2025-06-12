@@ -1,9 +1,10 @@
 //Clases
 class Producto{
-  constructor(id, nombre, descripcion, precio,imagen){
+  constructor(id, nombre, descripcion, categoria, precio,imagen){
       this.id = id;
       this.nombre = nombre;
       this.descripcion = descripcion;
+      this.categoria = categoria;
       this.precio = precio;
       this.imagen = imagen;
   }
@@ -61,31 +62,19 @@ class Carrito{
   // }
 }
 
+// --------------------------------------------------- VARIABLES --------------------------------------------
 // Lista de productos
 const productos = [
-  new Producto(1, "Pelota Mikasa", "descripcion", 25000, ""),
-  new Producto(2, "Red profesional", "descripcion", 45000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, ""),
-  new Producto(3, "Rodilleras Mizuno", "descripcion", 12000, "")
+  new Producto(1, "Pelota Mikasa", "descripcion", "pelota", 25000, ""),
+  new Producto(2, "Red profesional", "descripcion", "red",45000, ""),
+  new Producto(3, "Rodilleras Mizuno", "descripcion", "rodilleras", 12000, "")
 ];
 
 const carrito = new Carrito();
 let paginaActual = 1;
 const productosPorPagina = 12;
 
+// --------------------------------------------------- MOSTRAR PRODUCTOS --------------------------------------------
 //Funcion para mostrar productos
 function MostrarProductos(lista) {
   //Obtengo el contenedor
@@ -111,6 +100,7 @@ function MostrarProductos(lista) {
   });
 }
 
+// --------------------------------------------------- DIVIDIR EN PAGINAS --------------------------------------------
 //Funcion para filtrar los productos que van en cada página
 function obtenerProductosPorPagina(productos, pagina) {
   const inicio = (pagina - 1) * productosPorPagina;
@@ -145,5 +135,26 @@ function Paginar(productos) {
   }
 }
 
+// --------------------------------------------------- FILTROS --------------------------------------------
+//Creo funcion para filtrar por categoria
+function Filtrar(productos, categoria) {
+  if (categoria === "todos") {
+    return productos;
+  }
+
+  return productos.filter(producto => producto.categoria === categoria);
+}
+//Agarro el select de las categorias
+const filtroTipo = document.getElementById("filtro-tipo");
+//Creo el evento para que cuando el usuario cambie la categoria, se filtren los productos
+filtroTipo.addEventListener("change", () => {
+  const categoriaSeleccionada = filtroTipo.value;
+  const productosFiltrados = Filtrar(productos, categoriaSeleccionada);
+  paginaActual = 1;
+  MostrarProductos(obtenerProductosPorPagina(productosFiltrados, paginaActual));
+  Paginar(productosFiltrados);
+});
+
+// --------------------------------------------------- INICIALIZACION --------------------------------------------
 MostrarProductos(obtenerProductosPorPagina(productos, paginaActual));
 Paginar(productos);
