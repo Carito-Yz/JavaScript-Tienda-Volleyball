@@ -1,4 +1,4 @@
-//Clases
+// --------------------------------------------------- CLASES --------------------------------------------
 class Producto{
   constructor(id, nombre, descripcion, categoria, precio,imagen){
       this.id = id;
@@ -91,7 +91,8 @@ function MostrarProductos(lista) {
       <div class="card-body">
         <h5 class="card-title">${product.nombre}</h5>
         <p class="card-text">$${product.precio}</p>
-        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+        <p class="text-muted">Código: ${product.id}</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="mostrarDetalle(${product.id})"><i class="bi bi-cart-plus"></i>Agregar al Carrito</div>
       </div>
     </div>`;
 
@@ -154,6 +155,41 @@ filtroTipo.addEventListener("change", () => {
   MostrarProductos(obtenerProductosPorPagina(productosFiltrados, paginaActual));
   Paginar(productosFiltrados);
 });
+
+// --------------------------------------------------- DETALLE PRODUCTO --------------------------------------------
+function mostrarDetalle(id){
+  const producto = productos.find(p => p.id == id);
+  const contenedorModal = document.getElementById("modalContenido");
+  contenedorModal.innerHTML = "";
+
+  contenedorModal.innerHTML = `<div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">${producto.categoria}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="col-md-6">
+                      <img src="${producto.imagen}" class="img-fluid rounded" alt="${producto.nombre}">
+                    </div>
+                    <div class="col-md-6">
+                      <h2>${producto.nombre}</h2>
+                      <p class="text-muted">Código: ${producto.id}</p>
+                      <h3 class="text-success">$${producto.precio}</h3>
+                      <p class="mt-3">${producto.descripcion}</p>
+                      <ul class="list-unstyled mb-4">
+                        <li><i class="bi bi-truck"></i> Envío gratis a todo el país</li>
+                        <li><i class="bi bi-arrow-repeat"></i> Devolución gratis</li>
+                      </ul>
+                    </div>
+            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Agregar al Carrito</button>
+                </div>`
+
+  const modal = new bootstrap.Modal(document.getElementById('modalProducto'));
+  modal.show();
+}
 
 // --------------------------------------------------- INICIALIZACION --------------------------------------------
 MostrarProductos(obtenerProductosPorPagina(productos, paginaActual));
