@@ -10,56 +10,37 @@ class Producto{
   }
 }
 
-class Carrito{
-  constructor(){
+class Carrito {
+  constructor() {
     this.items = [];
   }
 
-  //Funcion para agregar producto
-  agregarProducto(producto, cantidad) {
-    //Verifico existencia
-    const existente = this.items.find(item => item.producto.id == producto.id);
-    //Si existe sumo las cantidades
-    if (existente) {
-      existente.cantidad += cantidad;
-    }
-    //Si no existe, añado producto al carrito 
-    else {
-      this.items.push({ producto, cantidad });
+  cargar() {
+    const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
+    if (carritoStorage) {
+      this.items = carritoStorage;
     }
   }
 
-  // //Funcion para eliminar producto
-  // eliminarProducto(idProducto, cantidad) {
-  //   // Busco producto
-  //   const item = this.items.find(item => item.producto.id === idProducto);
+  guardar() {
+    localStorage.setItem("carrito", JSON.stringify(this.items));
+  }
 
-  //   // Si no está, tiro error
-  //   if (!item) {
-  //     alert("Ese producto no está en el carrito.");
-  //     return;
-  //   }
-
-  //   // Verifico si la cantidad a eliminar es mayor a la agregada al carrito y tiro error
-  //   if (cantidad > item.cantidad) {
-  //     alert(`Error: solo tenés ${item.cantidad} unidad(es) de "${item.producto.nombre}" en el carrito.`);
-  //     return;
-  //   }
-
-  //   // Si la cantidad a eliminar es igual a la del carrito, elimino el producto del carrito
-  //   if (cantidad === item.cantidad) {
-  //     const index = this.items.findIndex(i => i.producto.id === idProducto);
-  //     if (index !== -1) {
-  //       this.items.splice(index, 1);
-  //       alert(`Se eliminó completamente "${item.producto.nombre}" del carrito.`);
-  //     }
-  //   } 
-  //   // Si no, le resto la cantidad deseada
-  //   else {
-  //     item.cantidad -= cantidad;
-  //     alert(`Se eliminaron ${cantidad} unidad(es) de "${item.producto.nombre}".`);
-  //   }
-  // }
+  agregarProducto(id, cantidad) {
+    const index = this.items.findIndex(p => p.producto.id == id);
+    if (index != -1) {
+      this.items[index].cantidad += cantidad;
+    } else {
+      const producto = productos.find(p => p.id === id);
+      if (producto) {
+        this.items.push({
+          producto: producto,
+          cantidad: cantidad
+        });
+      }
+    }
+    this.guardar();
+  }
 }
 
 // --------------------------------------------------- VARIABLES --------------------------------------------
@@ -92,7 +73,8 @@ function MostrarProductos(lista) {
         <h5 class="card-title">${product.nombre}</h5>
         <p class="card-text">$${product.precio}</p>
         <p class="text-muted">Código: ${product.id}</p>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="mostrarDetalle(${product.id})"><i class="bi bi-cart-plus"></i>Agregar al Carrito</div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProducto" onclick="mostrarDetalle(${product.id})"><i class="bi bi-cart-plus"></i>Agregar al Carrito
+        </div>
       </div>
     </div>`;
 
@@ -157,6 +139,7 @@ filtroTipo.addEventListener("change", () => {
 });
 
 // --------------------------------------------------- DETALLE PRODUCTO --------------------------------------------
+//Funcion para mostrar el detalle del producto
 function mostrarDetalle(id){
   const producto = productos.find(p => p.id == id);
   const contenedorModal = document.getElementById("modalContenido");
@@ -184,13 +167,117 @@ function mostrarDetalle(id){
             
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Agregar al Carrito</button>
+                    <button type="button" class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Agregar al Carrito</button>
                 </div>`
 
-  const modal = new bootstrap.Modal(document.getElementById('modalProducto'));
+  const modal = new bootstrap.Modal(document.getElementById('modal'));
   modal.show();
 }
 
+// --------------------------------------------------- CARRITO --------------------------------------------
+// Funcion para cerrar el modal y agregar los productos
+function agregarAlCarrito(id) {
+  carrito.agregarProducto(id, 1);
+  mostrarCarrito();
+
+  const modalElemento = document.getElementById('modalProducto');
+  const modalBootstrap = bootstrap.Modal.getInstance(modalElemento);
+  if (modalBootstrap) {
+    modalBootstrap.hide();
+  }
+}
+
+//Funcion para sumar o disminuir producto del carrito
+function cambiarCantidad(id, cambio) {
+  const index = carrito.items.findIndex(p => p.producto.id == id);
+  if (index != -1) {
+    carrito.items[index].cantidad += cambio;
+
+    if (carrito.items[index].cantidad <= 0) {
+      carrito.items.splice(index, 1);
+    }
+  }
+  carrito.guardar();
+  mostrarCarrito();
+}
+
+//Funcion para calcular el total
+function calcularTotal(){
+  let total = 0;
+
+  carrito.items.forEach(p => {
+    total += p.producto.precio * p.cantidad;
+  });
+
+  return total;
+}
+
+//Funcion para finalizar compra
+function finalizarCompra() {
+  alert("Gracias por tu compra!!");
+  carrito.items = [];
+  mostrarCarrito();
+}
+
+//Funcion para mostrar los datos en el carrito
+function mostrarCarrito(){
+  const productos = JSON.parse(localStorage.getItem("productos"));
+
+  if(productos != null)
+  {
+    productos.forEach(p => {
+      carrito.items.push(p);
+    });
+  }
+
+  const contenedorCarrito = document.getElementById("carritoContenido");
+  contenedorCarrito.innerHTML = "";
+
+  carrito.items.forEach(p => {
+    const contenido = document.createElement("div");
+    contenido.innerHTML = `
+      <div class="card mb-3 position-relative" style="max-width: 100%;">
+        <div class="row g-0">
+          <div class="col-4 d-flex align-items-center">
+            <img src="${p.producto.imagen}" class="img-fluid rounded-start" alt="${p.producto.nombre}" style="max-height: 80px; object-fit: contain;">
+          </div>
+
+          <div class="col-8">
+            <div class="card-body py-2">
+              <h6 class="card-title mb-1">${p.producto.nombre}</h6>
+
+              <div class="d-flex align-items-center">
+                <button class="btn btn-outline-secondary btn-sm me-2" onclick="cambiarCantidad(${p.producto.id}, -1)">−</button>
+                <span class="me-2">${p.cantidad}</span>
+                <button class="btn btn-outline-secondary btn-sm" onclick="cambiarCantidad(${p.producto.id}, 1)">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón eliminar -->
+        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2" onclick="cambiarCantidad(${p.producto.id},-${p.cantidad})">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>`;
+
+    contenedorCarrito.appendChild(contenido);
+  });
+
+   const total = document.createElement("div");
+    total.className = "text-end fw-bold fs-5 my-3";
+    total.textContent = `Total: $${calcularTotal()}`;
+    contenedorCarrito.appendChild(total);
+
+    // Botón finalizar compra
+    const boton = document.createElement("button");
+    boton.className = "btn btn-success w-100";
+    boton.textContent = "Finalizar compra";
+    boton.onclick = finalizarCompra;
+    contenedorCarrito.appendChild(boton);
+}
+
 // --------------------------------------------------- INICIALIZACION --------------------------------------------
+carrito.cargar();
 MostrarProductos(obtenerProductosPorPagina(productos, paginaActual));
 Paginar(productos);
