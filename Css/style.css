@@ -1,0 +1,267 @@
+/* ------------------------------------------------ PALETA DE COLORES ------------------------------------------------*/
+:root {
+  --color-azul-oscuro: #1B263B;
+  --color-gris-claro: #F4F7FA;
+  --color-gris-medio: #778DA9;
+  --color-gris-oscuro: #d4d4d4;
+  --color-naranja-acento: #e07a5f;
+  --color-naranja-hover: #c55a45;
+  --color-blanco: #FFFFFF;
+  --color-texto-principal: #2E4057;
+}
+
+/* ------------------------------------------------ BODY ------------------------------------------------*/
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-gris-claro);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ------------------------------------------------ HEADER ------------------------------------------------*/
+header {
+  background-color: var(--color-azul-oscuro);
+  color: var(--color-blanco);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  font-family: cinzel;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+header button.btn {
+  border: none;
+  color: var(--color-blanco);
+  font-size: 1.4rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+header button.btn:hover {
+  color: var(--color-naranja-acento);
+}
+
+/* ------------------------------------------------ CARRITO ------------------------------------------------*/
+#contadorCarrito {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: var(--color-naranja-acento);
+  color: var(--color-blanco);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 100%;
+}
+
+#botonFinalizarCompra{
+  border: none;
+  background-color: var(--color-naranja-acento);
+  color: var(--color-blanco);
+  font-size: 1.4rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+#botonFinalizarCompra:hover {
+  background-color: var(--color-naranja-hover);
+}
+
+/* ------------------------------------------------ FILTROS ------------------------------------------------*/
+#filtro-tipo {
+  background-color: var(--color-blanco);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  width: 200px;
+  cursor: pointer;
+}
+
+#filtro-tipo:hover {
+  background-color: var(--color-gris-oscuro);
+  border-color: var(--color-azul-oscuro);
+}
+
+/* ------------------------------------------------ PRODUCTOS ------------------------------------------------*/
+.card {
+  background-color: var(--color-blanco);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(224, 122, 95, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 280px;
+  margin: 1rem auto;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(224, 122, 95, 0.7);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  background-color: var(--color-gris-claro);
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-azul-oscuro);
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: var(--color-naranja-acento);
+  margin-bottom: 1rem;
+}
+
+.card button {
+  background-color: var(--color-naranja-acento);
+  border: none;
+  color: var(--color-blanco);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: var(--color-naranja-hover);
+}
+
+/* ------------------------------------------------ DETALLE PRODUCTO ------------------------------------------------*/
+.modal-content {
+  background-color: var(--color-blanco);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(27, 38, 59, 0.15);
+  padding: 1.5rem;
+  color: var(--color-azul-oscuro);
+  max-width: 700px;
+  margin: auto;
+}
+
+.modal-header {
+  border-bottom: 2px solid var(--color-naranja-acento);
+  padding-bottom: 0.5rem;
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-azul-oscuro);
+}
+
+.modal-body {
+  gap: 1.5rem;
+  margin-top: 1rem;
+  color: var(--color-texto-principal);
+}
+
+.modal-body img {
+  max-width: 250px;
+  border-radius: 8px;
+  object-fit: contain;
+  background-color: var(--color-gris-claro);
+  box-shadow: 0 4px 12px rgba(27, 38, 59, 0.1);
+}
+
+.modal-description {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  margin-top: 1.5rem;
+  border-top: 2px solid var(--color-naranja-acento);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal-footer .btn {
+  padding: 0.5rem 1.25rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-footer .btn-primary {
+  background-color: var(--color-naranja-acento);
+  border: none;
+  color: var(--color-blanco);
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #c55a45;
+}
+
+.modal-footer .btn-secondary {
+  background-color: var(--color-azul-oscuro);
+  border: none;
+  color: var(--color-blanco);
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #1b263bcc;
+}
+
+/* ------------------------------------------------ PAGINACIÓN ------------------------------------------------*/
+.page-link {
+  background-color: #f0f0f0;  /* Gris claro */
+  color: #333333;             /* Gris oscuro para texto */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 14px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-link:hover {
+  background-color: #b0b0b0;  /* Gris medio */
+  color: #222222;             /* Gris casi negro */
+  border-color: #999999;
+}
+
+.page-item.active .page-link {
+  background-color: #666666;  /* Gris oscuro */
+  color: #ffffff;
+  border-color: #444444;
+  cursor: default;
+  box-shadow: 0 0 8px rgba(102, 102, 102, 0.7);
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-azul-oscuro);
+  color: var(--color-blanco);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
