@@ -56,7 +56,7 @@ const productos = [
   new Producto(7, "Pelota Reebok Soft Touch", "Para uso recreativo.", "pelota", 16000, "./img/pelota-reebok-soft-touch.jpg"),
   new Producto(8, "Pelota Nike Elite", "Liviana y precisa.", "pelota", 17000, "./img/pelota-nike-all-court.jpg"),
   new Producto(9, "Pelota Dribbling Soft Touch", "Excelente para principiantes.", "pelota", 15500, "./img/pelota-dribbling-soft-touch.jpg"),
-  new Producto(10, "Pelota Gala Pro-Line BV5595S", "Uso profesional.", "pelota", 24500, "./img/pelota-gala-bv5595s.jpg"),
+  new Producto(10, "Pelota Gala Pro-Line BV5595S", "Uso profesional.", "pelota", 24500, "./img/pelota-gala-bv5595s.png"),
 
   // ---- RODILLERAS ----
   new Producto(11, "Rodilleras Mizuno LR6 Negras", "Protección profesional.", "rodilleras", 12000, "./img/rodilleras-mizuno-lr6-negras.jpg"),
