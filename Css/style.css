@@ -271,3 +271,9 @@ footer {
   margin-top: 3rem;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
 }
+
+footer img{
+    border-radius: 30%;
+    width: 50px; 
+    height: 100%;
+}
