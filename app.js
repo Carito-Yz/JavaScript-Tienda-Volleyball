@@ -53,7 +53,7 @@ const productos = [
   new Producto(4, "Pelota Mikasa V330W", "Alta durabilidad y control.", "pelota", 19500, "./img/pelota-mikasa-v330w.jpg"),
   new Producto(5, "Pelota Molten Cocida MS500-P3S", "Diseño resistente para entrenamientos.", "pelota", 18000, "./img/pelota-molten-cocida-ms500-p3s.jpg"),
   new Producto(6, "Pelota Molten V5M4000", "Excelente calidad-precio.", "pelota", 20000, "./img/pelota-molten- v5m4000.jpg"),
-  new Producto(7, "Pelota Reebok Soft Touch", "Para uso recreativo.", "pelota", 16000, "./img/pelota-reebok-soft-touch-2.jpg"),
+  new Producto(7, "Pelota Reebok Soft Touch", "Para uso recreativo.", "pelota", 16000, "./img/pelota-rebook-soft-touch-2.jpg"),
   new Producto(8, "Pelota Nike Elite", "Liviana y precisa.", "pelota", 17000, "./img/pelota-nike-all-court.jpg"),
   new Producto(9, "Pelota Dribbling Soft Touch", "Excelente para principiantes.", "pelota", 15500, "./img/pelota-dribbling-soft-touch.jpg"),
   new Producto(10, "Pelota Gala Pro-Line BV5595S", "Uso profesional.", "pelota", 24500, "./img/pelota-gala-bv5595s.jpg"),
