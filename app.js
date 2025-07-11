@@ -154,7 +154,6 @@ filtroTipo.addEventListener("change", () => {
 // --------------------------------------------------- DETALLE PRODUCTO --------------------------------------------
 //Funcion para mostrar el detalle del producto
 function mostrarDetalle(id){
-  console.log(id)
   const producto = productosCargados.find(p => p.id == id);
   const contenedorModal = document.getElementById("modalContenido");
   contenedorModal.innerHTML = "";
@@ -247,16 +246,103 @@ function calcularTotal(){
 function finalizarCompra() {
   if(carrito.items.length == 0)
   {
-    alert("Aun no ha agregado elementos al carrito");
+    Swal.fire({
+      title: "Carrito Vacío",
+      text: "Por favor agregue productos al carrito antes de finalizar su compra!",
+      icon: "error",
+      showClass: {
+        popup: `
+          animate__animated
+          animate__zoomIn
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__zoomOut
+        `
+      },
+      confirmButtonText: `<i class="bi bi-arrow-clockwise"></i> Volver`
+    });
   }
   else
   {
-    alert("Gracias por tu compra!!");
+    mostrarCompraFinal();
+  }
+}
+
+//Funcion para mostrar formulario de pago
+function mostrarCompraFinal(){
+  const contenedorModalCompra = document.getElementById("modalContenidoCompra");
+  contenedorModalCompra.innerHTML = "";
+
+  contenedorModalCompra.innerHTML = `<div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Datos de Pago</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                      <!-- Formulario visual de pago -->
+                                      <form id="formularioPago">
+                                        <div class="mb-3">
+                                          <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+                                          <input type="text" class="form-control" id="numeroTarjeta" placeholder="1234 5678 9012 3456">
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label for="nombreTitular" class="form-label">Nombre del Titular</label>
+                                          <input type="text" class="form-control" id="nombreTitular" placeholder="Juan Pérez">
+                                        </div>
+
+                                        <div class="row">
+                                          <div class="col-md-6 mb-3">
+                                            <label for="vencimiento" class="form-label">Fecha de Vencimiento</label>
+                                            <input type="month" class="form-control" id="vencimiento">
+                                          </div>
+
+                                          <div class="col-md-6 mb-3">
+                                            <label for="codigoSeguridad" class="form-label">Código de Seguridad</label>
+                                            <input type="password" class="form-control" id="codigoSeguridad" placeholder="123" maxlength="4">
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                      <button type="button" class="btn btn-success" onclick="compraFinalizada()">Confirmar Pago</button>
+                                    </div>
+
+`
+
+  const modal = new bootstrap.Modal(document.getElementById('modalFinalCompra'));
+  modal.show();
+}
+
+function compraFinalizada()
+{
+  Swal.fire({
+      title: "Su compra se ha realizado con éxito!!",
+      icon: "success",
+      showClass: {
+        popup: `
+          animate__animated
+          animate__zoomIn
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__zoomOut
+        `
+      },
+      confirmButtonText: `<i class="bi bi-check2"></i> Ok`
+    });
+
     carrito.items = [];
     carrito.guardar();
     mostrarCarrito();
     actualizarContadorCarrito();
-  }
 }
 
 //Funcion para mostrar los datos en el carrito
