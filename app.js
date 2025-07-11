@@ -343,6 +343,12 @@ function compraFinalizada()
     carrito.guardar();
     mostrarCarrito();
     actualizarContadorCarrito();
+
+    const modalElemento = document.getElementById('modalFinalCompra');
+    const modalBootstrap = bootstrap.Modal.getInstance(modalElemento);
+    if (modalBootstrap) {
+      modalBootstrap.hide();
+    }
 }
 
 //Funcion para mostrar los datos en el carrito
