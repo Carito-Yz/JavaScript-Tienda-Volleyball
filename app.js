@@ -31,7 +31,7 @@ class Carrito {
     if (index != -1) {
       this.items[index].cantidad += cantidad;
     } else {
-      const producto = productos.find(p => p.id === id);
+      const producto = productosCargados.find(p => p.id === id);
       if (producto) {
         this.items.push({
           producto: producto,
@@ -43,53 +43,28 @@ class Carrito {
   }
 }
 
-// --------------------------------------------------- VARIABLES --------------------------------------------
-// Lista de productos
-const productos = [
-  // ---- PELOTAS ----
-  new Producto(1, "Pelota Mikasa V200W", "Pelota oficial FIVB.", "pelota", 25000, "./img/pelota-mikasa-v200w.png"),
-  new Producto(2, "Pelota Molten V5M5000", "Pelota profesional de cuero sintético.", "pelota", 23000, "./img/pelota-molten- v5m5000.jpg"),
-  new Producto(3, "Pelota Wilson AVP", "Ideal para voley de playa.", "pelota", 21000, "./img/pelota-wilson-avp.jpg"),
-  new Producto(4, "Pelota Mikasa V330W", "Alta durabilidad y control.", "pelota", 19500, "./img/pelota-mikasa-v330w.jpg"),
-  new Producto(5, "Pelota Molten Cocida MS500-P3S", "Diseño resistente para entrenamientos.", "pelota", 18000, "./img/pelota-molten-cocida-ms500-p3s.jpg"),
-  new Producto(6, "Pelota Molten V5M4000", "Excelente calidad-precio.", "pelota", 20000, "./img/pelota-molten- v5m4000.jpg"),
-  new Producto(7, "Pelota Reebok Soft Touch", "Para uso recreativo.", "pelota", 16000, "./img/pelota-reebok-soft-touch.jpg"),
-  new Producto(8, "Pelota Nike Elite", "Liviana y precisa.", "pelota", 17000, "./img/pelota-nike-all-court.jpg"),
-  new Producto(9, "Pelota Dribbling Soft Touch", "Excelente para principiantes.", "pelota", 15500, "./img/pelota-dribbling-soft-touch.jpg"),
-  new Producto(10, "Pelota Gala Pro-Line BV5595S", "Uso profesional.", "pelota", 24500, "./img/pelota-gala-bv5595s.jpg"),
+// --------------------------------------------------- DATA --------------------------------------------
+//Conexión a JSON
+const URL = "./db/data.json"
 
-  // ---- RODILLERAS ----
-  new Producto(11, "Rodilleras Mizuno LR6 Negras", "Protección profesional.", "rodilleras", 12000, "./img/rodilleras-mizuno-lr6-negras.jpg"),
-  new Producto(12, "Rodilleras Mizuno LR6 Negras", "Comodidad total.", "rodilleras", 11500, "./img/rodilleras-mizuno-lr6-blancas.jpg"),
-  new Producto(13, "Rodilleras Penalty Pro", "Uso diario.", "rodilleras", 11000, "./img/penalty-5.jpg"),
-  new Producto(14, "Rodilleras DRB", "Gran absorción de impacto.", "rodilleras", 9000, "./img/rodilleras-drb.jpeg"),
-  new Producto(15, "Rodilleras Adidas Match", "Diseño ergonómico.", "rodilleras", 10500, "./img/rodilleras-adidas-match.jpg"),
-  new Producto(16, "Rodilleras Nike Court", "Flexibles y livianas.", "rodilleras", 9500, "./img/rodilleras-nike-court.jpg"),
-  new Producto(17, "Rodilleras Wilson Training", "Protección confiable.", "rodilleras", 9800, "./img/rodilleras-wilson.jpg"),
-  new Producto(18, "Rodilleras ALLSIX", "Uso recreativo.", "rodilleras", 8700, "./img/rodilleras-allsix.jpg"),
-  new Producto(19, "Rodilleras Striker", "Buena relación precio/calidad.", "rodilleras", 8900, "./img/rodilleras-striker.png"),
-  new Producto(20, "Rodilleras NassaU", "Confort y resistencia.", "rodilleras", 10200, "./img/rodilleras-nassau.jpg"),
-  new Producto(21, "Rodilleras Proyec", "Comodidad total.", "rodilleras", 11500, "./img/rodilleras-proyec.jpg"),
-
-  // ---- INDUMENTARIA ----
-  new Producto(22, "Short Mizuno Mujer", "Tejido transpirable y liviano.", "indumentaria", 15000, "./img/short-mujer-mizuno.png"),
-  new Producto(23, "Short Nike Court Dry", "Secado rápido y gran comodidad.", "indumentaria", 13500, "./img/short-nike-dry-7.jpg"),
-  new Producto(24, "Camiseta Mizuno Performance", "Ideal para partidos intensos.", "indumentaria", 14500, "./img/camiseta-mizuno-performance.jpg"),
-  new Producto(25, "Short Puma Flex", "Diseño deportivo con ajuste perfecto.", "indumentaria", 12500, "./img/short-puma-flex.jpeg"),
-  new Producto(26, "Calza Larga Penalty Compresiva", "Soporte muscular y elasticidad.", "indumentaria", 17000, "./img/calza-larga-compresiva.png"),
-  new Producto(27, "Camiseta High Runner", "Mayor ventilación y confort.", "indumentaria", 12800, "./img/camiseta-high-runner.png"),
-  new Producto(28, "Camiseta Termica Montero", "Ligero y resistente al desgaste.", "indumentaria", 9800, "./img/camiseta-termica-montero.jpg"),
-  new Producto(29, "Top Deportivo Nike Vball", "Sujeción perfecta para entrenamiento.", "indumentaria", 11000, "./img/top-deportivo-nike.png"),
-  new Producto(30, "Musculosa Reusch Hombre", "Diseño oficial de competición.", "indumentaria", 14200, "./img/musculosa-reusch-hombre.png"),
-  new Producto(31, "Short Mikasa Training", "Movilidad total y tela suave.", "indumentaria", 12000, "./img/short-mikasa.png"),
-  new Producto(32, "Musculosa Nike Mujer", "Ideal para climas cálidos.", "indumentaria", 9500, "./img/musculosa-nike-mujer.png")
-];
+function obtenerData()
+{
+    fetch(URL)
+    .then((response) => response.json())
+    .then((data) => {
+      productosCargados = data
+      MostrarProductos(data)
+      Paginar(data)
+    })
+    .catch((error) => console.log("Hubo un error"))
+}
 
 const carrito = new Carrito();
 let paginaActual = 1;
 const productosPorPagina = 12;
 
 // --------------------------------------------------- MOSTRAR PRODUCTOS --------------------------------------------
+obtenerData()
 //Funcion para mostrar productos
 function MostrarProductos(lista) {
   //Obtengo el contenedor
@@ -170,7 +145,7 @@ const filtroTipo = document.getElementById("filtro-tipo");
 //Creo el evento para que cuando el usuario cambie la categoria, se filtren los productos
 filtroTipo.addEventListener("change", () => {
   const categoriaSeleccionada = filtroTipo.value;
-  const productosFiltrados = Filtrar(productos, categoriaSeleccionada);
+  const productosFiltrados = Filtrar(productosCargados, categoriaSeleccionada);
   paginaActual = 1;
   MostrarProductos(obtenerProductosPorPagina(productosFiltrados, paginaActual));
   Paginar(productosFiltrados);
@@ -179,7 +154,8 @@ filtroTipo.addEventListener("change", () => {
 // --------------------------------------------------- DETALLE PRODUCTO --------------------------------------------
 //Funcion para mostrar el detalle del producto
 function mostrarDetalle(id){
-  const producto = productos.find(p => p.id == id);
+  console.log(id)
+  const producto = productosCargados.find(p => p.id == id);
   const contenedorModal = document.getElementById("modalContenido");
   contenedorModal.innerHTML = "";
 
@@ -215,6 +191,7 @@ function mostrarDetalle(id){
 // --------------------------------------------------- CARRITO --------------------------------------------
 // Funcion para cerrar el modal y agregar los productos
 function agregarAlCarrito(id) {
+  console.log(id)
   carrito.agregarProducto(id, 1);
   mostrarCarrito();
   actualizarContadorCarrito();
@@ -343,5 +320,3 @@ function mostrarCarrito(){
 
 // --------------------------------------------------- INICIALIZACION --------------------------------------------
 carrito.cargar();
-MostrarProductos(obtenerProductosPorPagina(productos, paginaActual));
-Paginar(productos);

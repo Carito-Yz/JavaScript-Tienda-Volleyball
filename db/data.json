@@ -1,0 +1,258 @@
+[
+    { 
+        "id": 1, 
+        "nombre": "Pelota Mikasa V200W", 
+        "descripcion": "Pelota oficial FIVB.", 
+        "categoria": "pelota", 
+        "precio": 25000, 
+        "imagen": "../img/pelota-mikasa-v200w.png"
+    },
+    { 
+        "id": 2, 
+        "nombre": "Pelota Molten V5M5000", 
+        "descripcion": "Pelota profesional de cuero sintético.", 
+        "categoria": "pelota", 
+        "precio": 23000, 
+        "imagen": "../img/pelota-molten- v5m5000.jpg"
+    },
+    { 
+        "id": 3, 
+        "nombre": "Pelota Wilson AVP", 
+        "descripcion": "Ideal para voley de playa.", 
+        "categoria": "pelota", 
+        "precio": 21000, 
+        "imagen": "../img/pelota-wilson-avp.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Pelota Mikasa V330W",
+        "descripcion": "Alta durabilidad y control.",
+        "categoria": "pelota",
+        "precio": 19500,
+        "imagen": "./img/pelota-mikasa-v330w.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Pelota Molten Cocida MS500-P3S",
+        "descripcion": "Diseño resistente para entrenamientos.",
+        "categoria": "pelota",
+        "precio": 18000,
+        "imagen": "./img/pelota-molten-cocida-ms500-p3s.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Pelota Molten V5M4000",
+        "descripcion": "Excelente calidad-precio.",
+        "categoria": "pelota",
+        "precio": 20000,
+        "imagen": "./img/pelota-molten-v5m4000.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Pelota Reebok Soft Touch",
+        "descripcion": "Para uso recreativo.",
+        "categoria": "pelota",
+        "precio": 16000,
+        "imagen": "./img/pelota-reebok-soft-touch.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Pelota Nike Elite",
+        "descripcion": "Liviana y precisa.",
+        "categoria": "pelota",
+        "precio": 17000,
+        "imagen": "./img/pelota-nike-all-court.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Pelota Dribbling Soft Touch",
+        "descripcion": "Excelente para principiantes.",
+        "categoria": "pelota",
+        "precio": 15500,
+        "imagen": "./img/pelota-dribbling-soft-touch.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "Pelota Gala Pro-Line BV5595S",
+        "descripcion": "Uso profesional.",
+        "categoria": "pelota",
+        "precio": 24500,
+        "imagen": "./img/pelota-gala-bv5595s.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "Rodilleras Mizuno LR6 Negras",
+        "descripcion": "Protección profesional.",
+        "categoria": "rodilleras",
+        "precio": 12000,
+        "imagen": "./img/rodilleras-mizuno-lr6-negras.jpg"
+    },
+    {
+        "id": 12,
+        "nombre": "Rodilleras Mizuno LR6 Negras",
+        "descripcion": "Comodidad total.",
+        "categoria": "rodilleras",
+        "precio": 11500,
+        "imagen": "./img/rodilleras-mizuno-lr6-blancas.jpg"
+    },
+    {
+        "id": 13,
+        "nombre": "Rodilleras Penalty Pro",
+        "descripcion": "Uso diario.",
+        "categoria": "rodilleras",
+        "precio": 11000,
+        "imagen": "./img/penalty-5.jpg"
+    },
+    {
+        "id": 14,
+        "nombre": "Rodilleras DRB",
+        "descripcion": "Gran absorción de impacto.",
+        "categoria": "rodilleras",
+        "precio": 9000,
+        "imagen": "./img/rodilleras-drb.jpeg"
+    },
+    {
+        "id": 15,
+        "nombre": "Rodilleras Adidas Match",
+        "descripcion": "Diseño ergonómico.",
+        "categoria": "rodilleras",
+        "precio": 10500,
+        "imagen": "./img/rodilleras-adidas-match.jpg"
+    },
+    {
+        "id": 16,
+        "nombre": "Rodilleras Nike Court",
+        "descripcion": "Flexibles y livianas.",
+        "categoria": "rodilleras",
+        "precio": 9500,
+        "imagen": "./img/rodilleras-nike-court.jpg"
+    },
+    {
+        "id": 17,
+        "nombre": "Rodilleras Wilson Training",
+        "descripcion": "Protección confiable.",
+        "categoria": "rodilleras",
+        "precio": 9800,
+        "imagen": "./img/rodilleras-wilson.jpg"
+    },
+    {
+        "id": 18,
+        "nombre": "Rodilleras ALLSIX",
+        "descripcion": "Uso recreativo.",
+        "categoria": "rodilleras",
+        "precio": 8700,
+        "imagen": "./img/rodilleras-allsix.jpg"
+    },
+    {
+        "id": 19,
+        "nombre": "Rodilleras Striker",
+        "descripcion": "Buena relación precio/calidad.",
+        "categoria": "rodilleras",
+        "precio": 8900,
+        "imagen": "./img/rodilleras-striker.png"
+    },
+    {
+        "id": 20,
+        "nombre": "Rodilleras NassaU",
+        "descripcion": "Confort y resistencia.",
+        "categoria": "rodilleras",
+        "precio": 10200,
+        "imagen": "./img/rodilleras-nassau.jpg"
+    },
+    {
+        "id": 21,
+        "nombre": "Rodilleras Proyec",
+        "descripcion": "Comodidad total.",
+        "categoria": "rodilleras",
+        "precio": 11500,
+        "imagen": "./img/rodilleras-proyec.jpg"
+    },
+    {
+        "id": 22,
+        "nombre": "Short Mizuno Mujer",
+        "descripcion": "Tejido transpirable y liviano.",
+        "categoria": "indumentaria",
+        "precio": 15000,
+        "imagen": "./img/short-mujer-mizuno.png"
+    },
+    {
+        "id": 23,
+        "nombre": "Short Nike Court Dry",
+        "descripcion": "Secado rápido y gran comodidad.",
+        "categoria": "indumentaria",
+        "precio": 13500,
+        "imagen": "./img/short-nike-dry-7.jpg"
+    },
+    {
+        "id": 24,
+        "nombre": "Camiseta Mizuno Performance",
+        "descripcion": "Ideal para partidos intensos.",
+        "categoria": "indumentaria",
+        "precio": 14500,
+        "imagen": "./img/camiseta-mizuno-performance.jpg"
+    },
+    {
+        "id": 25,
+        "nombre": "Short Puma Flex",
+        "descripcion": "Diseño deportivo con ajuste perfecto.",
+        "categoria": "indumentaria",
+        "precio": 12500,
+        "imagen": "./img/short-puma-flex.jpeg"
+    },
+    {
+        "id": 26,
+        "nombre": "Calza Larga Penalty Compresiva",
+        "descripcion": "Soporte muscular y elasticidad.",
+        "categoria": "indumentaria",
+        "precio": 17000,
+        "imagen": "./img/calza-larga-compresiva.png"
+    },
+    {
+        "id": 27,
+        "nombre": "Camiseta High Runner",
+        "descripcion": "Mayor ventilación y confort.",
+        "categoria": "indumentaria",
+        "precio": 12800,
+        "imagen": "./img/camiseta-high-runner.png"
+    },
+    {
+        "id": 28,
+        "nombre": "Camiseta Termica Montero",
+        "descripcion": "Ligero y resistente al desgaste.",
+        "categoria": "indumentaria",
+        "precio": 9800,
+        "imagen": "./img/camiseta-termica-montero.jpg"
+    },
+    {
+        "id": 29,
+        "nombre": "Top Deportivo Nike Vball",
+        "descripcion": "Sujeción perfecta para entrenamiento.",
+        "categoria": "indumentaria",
+        "precio": 11000,
+        "imagen": "./img/top-deportivo-nike.png"
+    },
+    {
+        "id": 30,
+        "nombre": "Musculosa Reusch Hombre",
+        "descripcion": "Diseño oficial de competición.",
+        "categoria": "indumentaria",
+        "precio": 14200,
+        "imagen": "./img/musculosa-reusch-hombre.png"
+    },
+    {
+        "id": 31,
+        "nombre": "Short Mikasa Training",
+        "descripcion": "Movilidad total y tela suave.",
+        "categoria": "indumentaria",
+        "precio": 12000,
+        "imagen": "./img/short-mikasa.png"
+    },
+    {
+        "id": 32,
+        "nombre": "Musculosa Nike Mujer",
+        "descripcion": "Ideal para climas cálidos.",
+        "categoria": "indumentaria",
+        "precio": 9500,
+        "imagen": "./img/musculosa-nike-mujer.png"
+    } 
+]
