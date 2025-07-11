@@ -21,7 +21,7 @@
         "descripcion": "Ideal para voley de playa.", 
         "categoria": "pelota", 
         "precio": 21000, 
-        "imagen": "img/pelota-wilson-avp.jpg"
+        "imagen": "img/pelota-wilson-avp.JPG"
     },
     {
         "id": 4,
@@ -53,7 +53,7 @@
         "descripcion": "Para uso recreativo.",
         "categoria": "pelota",
         "precio": 16000,
-        "imagen": "img/pelota-reebok-soft-touch.jpg"
+        "imagen": "img/pelota-reebok-soft-touch.JPG"
     },
     {
         "id": 8,
@@ -61,7 +61,7 @@
         "descripcion": "Liviana y precisa.",
         "categoria": "pelota",
         "precio": 17000,
-        "imagen": "img/pelota-nike-all-court.jpg"
+        "imagen": "img/pelota-nike-all-court.JPG"
     },
     {
         "id": 9,
@@ -69,7 +69,7 @@
         "descripcion": "Excelente para principiantes.",
         "categoria": "pelota",
         "precio": 15500,
-        "imagen": "img/pelota-dribbling-soft-touch.jpg"
+        "imagen": "img/pelota-dribbling-soft-touch.JPG"
     },
     {
         "id": 10,
@@ -85,7 +85,7 @@
         "descripcion": "Protección profesional.",
         "categoria": "rodilleras",
         "precio": 12000,
-        "imagen": "img/rodilleras-mizuno-lr6-negras.jpg"
+        "imagen": "img/rodilleras-mizuno-lr6-negras.JPG"
     },
     {
         "id": 12,
@@ -93,7 +93,7 @@
         "descripcion": "Comodidad total.",
         "categoria": "rodilleras",
         "precio": 11500,
-        "imagen": "img/rodilleras-mizuno-lr6-blancas.jpg"
+        "imagen": "img/rodilleras-mizuno-lr6-blancas.JPG"
     },
     {
         "id": 13,
@@ -125,7 +125,7 @@
         "descripcion": "Flexibles y livianas.",
         "categoria": "rodilleras",
         "precio": 9500,
-        "imagen": "img/rodilleras-nike-court.jpg"
+        "imagen": "img/rodilleras-nike-court.JPG"
     },
     {
         "id": 17,
@@ -133,7 +133,7 @@
         "descripcion": "Protección confiable.",
         "categoria": "rodilleras",
         "precio": 9800,
-        "imagen": "img/rodilleras-wilson.jpg"
+        "imagen": "img/rodilleras-wilson.JPG"
     },
     {
         "id": 18,
@@ -141,7 +141,7 @@
         "descripcion": "Uso recreativo.",
         "categoria": "rodilleras",
         "precio": 8700,
-        "imagen": "img/rodilleras-allsix.jpg"
+        "imagen": "img/rodilleras-allsix.JPG"
     },
     {
         "id": 19,
@@ -157,7 +157,7 @@
         "descripcion": "Confort y resistencia.",
         "categoria": "rodilleras",
         "precio": 10200,
-        "imagen": "img/rodilleras-nassau.jpg"
+        "imagen": "img/rodilleras-nassau.JPG"
     },
     {
         "id": 21,
@@ -165,7 +165,7 @@
         "descripcion": "Comodidad total.",
         "categoria": "rodilleras",
         "precio": 11500,
-        "imagen": "img/rodilleras-proyec.jpg"
+        "imagen": "img/rodilleras-proyec.JPG"
     },
     {
         "id": 22,
@@ -181,7 +181,7 @@
         "descripcion": "Secado rápido y gran comodidad.",
         "categoria": "indumentaria",
         "precio": 13500,
-        "imagen": "img/short-nike-dry-7.jpg"
+        "imagen": "img/short-nike-dry-7.JPG"
     },
     {
         "id": 24,
@@ -189,7 +189,7 @@
         "descripcion": "Ideal para partidos intensos.",
         "categoria": "indumentaria",
         "precio": 14500,
-        "imagen": "img/camiseta-mizuno-performance.jpg"
+        "imagen": "img/camiseta-mizuno-performance.JPG"
     },
     {
         "id": 25,
@@ -221,7 +221,7 @@
         "descripcion": "Ligero y resistente al desgaste.",
         "categoria": "indumentaria",
         "precio": 9800,
-        "imagen": "img/camiseta-termica-montero.jpg"
+        "imagen": "img/camiseta-termica-montero.JPG"
     },
     {
         "id": 29,
