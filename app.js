@@ -56,7 +56,18 @@ function obtenerData()
       MostrarProductos(data)
       Paginar(data)
     })
-    .catch((error) => console.log("Hubo un error"))
+    .catch((error) => {
+      document.body.innerHTML = `<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+                                    <div class="row text-center">
+                                      <div class="col-12">
+                                        <h1>ERROR 404</h1>
+                                      </div>
+                                      <div class="col-12">
+                                        <p>PAGE NOT FOUND</p>
+                                      </div>
+                                    </div>
+                                  </div>`;
+    })
 }
 
 const carrito = new Carrito();
